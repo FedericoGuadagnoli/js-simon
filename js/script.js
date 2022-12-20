@@ -18,14 +18,6 @@ console.log(deadLine);
 const deadLineMs = deadLine.getTime();
 console.log(deadLineMs);
 
-// Determino la data attuale in millisecondi
-const nowDateMs = new Date().getTime();
-console.log(nowDateMs);
-
-// Calcolo la differenza 
-const diff = deadLineMs - nowDateMs;
-console.log(diff);
-
 // Determino giorno ora minuto e secondi in millisecondi
 const secondMs = 1000;
 const minuteMs = secondMs * 60;
@@ -33,15 +25,24 @@ const hourMs = minuteMs * 60;
 const dayMs = hourMs * 24;
 console.log(dayMs, hourMs, minuteMs, secondMs);
 
-// Calcolo quanti millisecondi mancano al natale in console
-console.log( diff / dayMs);
 
-// Inserisco in countdown in pagina
-counterDays.innerHTML = Math.floor (diff / dayMs);
-counterHours.innerHTML = Math.floor ((diff % dayMs) / hourMs);
-counterMinutes.innerHTML = Math.floor ((diff % hourMs) / minuteMs);
-counterSeconds.innerHTML = Math.floor ((diff % minuteMs) / secondMs);
+// Creo la variabile timer
+const timerElement = setInterval(timer , 1000);
 
+// Creo la funzione di countdown
+function timer () {
+    // Determino la data attuale in millisecondi
+    const nowDateMs = new Date().getTime();
+    console.log(nowDateMs);
+    
+    // Calcolo la differenza 
+    const diff = deadLineMs - nowDateMs;
+    console.log(diff);
 
-
+    // Inserisco in countdown in pagina
+    counterDays.innerHTML = Math.floor (diff / dayMs);
+    counterHours.innerHTML = Math.floor ((diff % dayMs) / hourMs);
+    counterMinutes.innerHTML = Math.floor ((diff % hourMs) / minuteMs);
+    counterSeconds.innerHTML = Math.floor ((diff % minuteMs) / secondMs);
+}
 
