@@ -38,11 +38,16 @@ function timer () {
     // Calcolo la differenza 
     const diff = deadLineMs - nowDateMs;
     console.log(diff);
+    
+    if (diff > 0) {
+        // Inserisco in countdown in pagina
+        counterDays.innerHTML = Math.floor (diff / dayMs);
+        counterHours.innerHTML = Math.floor ((diff % dayMs) / hourMs);
+        counterMinutes.innerHTML = Math.floor ((diff % hourMs) / minuteMs);
+        counterSeconds.innerHTML = Math.floor ((diff % minuteMs) / secondMs);
+    } else {
+        clearInterval(timer);
+    }
 
-    // Inserisco in countdown in pagina
-    counterDays.innerHTML = Math.floor (diff / dayMs);
-    counterHours.innerHTML = Math.floor ((diff % dayMs) / hourMs);
-    counterMinutes.innerHTML = Math.floor ((diff % hourMs) / minuteMs);
-    counterSeconds.innerHTML = Math.floor ((diff % minuteMs) / secondMs);
 }
 
